@@ -83,7 +83,8 @@ jobs:
         if: needs.prepare.outputs.is-head-master == 'true'
         uses: docker/build-push-action@v6
         with:
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64]
+          push: true
           tags: |
             ${{ github.repository_owner }}/irma:${{ github.sha }}
             ${{ github.repository_owner }}/irma:edge
@@ -93,6 +94,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           platforms: linux/amd64,linux/arm64
+          push: true
           tags: |
             ${{ github.repository_owner }}/irma:${{ github.sha }}
             ${{ github.repository_owner }}/irma:${{ github.event.release.tag_name }}
@@ -102,6 +104,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           platforms: linux/amd64,linux/arm64
+          push: true
           tags: |
             ${{ github.repository_owner }}/irma:${{ github.sha }}
             ${{ github.repository_owner }}/irma:latest
